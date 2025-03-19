@@ -1,15 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>{% block title %} City of Calgary Building Permits {% endblock %}</h1>
+    <h1>{% block title %} 2017 Traffic Incidents and Building Permits {% endblock %}</h1>
 
     <!-- Date range picker -->
 
     <form method="POST">
         <div class="container">
-            <label for="daterange">Select Date Range:</label>
+            <label for="daterange">Building Permits Date Range:</label>
             <input type="text" id="daterange" name="daterange" />
-            <button type="submit" class="btn btn-primary">Search</button>
+            <input type="checkbox" id="showmapbox" name="showmapbox" {{showmapbox}} />Show 2017 Traffic Incidents
+            <button type="submit" class="btn btn-primary">Load Data</button>
         </div>
     </form>
 
@@ -28,17 +29,31 @@
 
     <!-- Leaflet Calgary Map -->
 
-    <div id="map" style="width: 1024px; height: 768px;"></div>
+    <div id="map" style="width: 100%; height: 768px;"></div>
 
     <script>
         // Load Calgary Map
     
         const map = L.map('map').setView([51.0447, -114.0719], 12); // Calgary coord.
 
-        const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
+
+        // Show Mapbox layer if turned on
+
+        const mapboxAccessToken = "{{mapboxAccessToken}}"
+        const showmapbox = "{{showmapbox}}"
+
+        if (showmapbox !== '') {
+            L.tileLayer(' https://api.mapbox.com/styles/v1/raymondleeuofc/cm8ffxn5g00zk01ssh1gdgld4/tiles/{z}/{x}/{y}?fresh=true&access_token=' + mapboxAccessToken, {
+                maxZoom: 19,
+                zoomOffset: -1,
+                tileSize: 512,
+                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            }).addTo(map);
+        }
 
         // Search Calgary Building Permits data set and add to map. 
 

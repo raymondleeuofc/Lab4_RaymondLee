@@ -1,5 +1,5 @@
-# ENGO551/651 - Lab 3 Assignment
-The objective of this lab was to gain experience with Leaflet.js and GeoJSON as well as learning to build a geoweb app through combining two APIs. 
+# ENGO551/651 - Lab 4 Assignment
+The objective of this lab was to gain experience with Mapbox Vector Tiles and Mapbox Studio, design a visually appealing map layer, and integrate a vector tileset to an existing GeoWeb application (Lab 3).
 
 ## Important Folders and Files
 - static : contains the style sheets
@@ -7,16 +7,17 @@ The objective of this lab was to gain experience with Leaflet.js and GeoJSON as 
 - templates : contains the html files used on the website
     - base.html : the base webpage format that all other html files inherit
     - index.html : the main webpage file
-- application.py : the Python script containing all the functionality for getting building permit information. 
+- application.py : the Python script containing all the functionality for getting building permit information, and Mapbox Style layer. 
 - run.bat : a batch file used to run the application.py script
 
 ## Requirements Met
-1. When users visit the building permit website, they are shown a map of Calgary.
-2. Users can search for building permits in a range of dates using the date selector widget. 
-3. Users can click on each marker (representing a building permit) to which they are shown all relevant information for that permit. 
-4. In the case of overlapping markers, the OverlappingMarkerSpiderfier Leafltet Plug-in is used to expand these markers to clearly show the user permit information. 
-5. When zoomed out to certain levels, markers can become very close and look unappealing, to remedy this issue these markers are clustered together. The individual markers can be shown by clicking on a cluster which causes the map to zoom out. 
-6. The map is refreshed when the user searches for a new date range. 
+1. All requirements from Lab 3 are met. 
+2. When the user visits the site, the 2017 Traffic Incident layer can be toggled on and off. 
+3. The map layer was designed to be visually appealing, this was done by adjusting factors such as Radius, Color, Blur, and Opacity.
+    - Radius 
+    - Color
+    - Blur
+    - Opacity
 
 
 ## Additional Details about the Lab Assignment 

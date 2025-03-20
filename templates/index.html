@@ -10,7 +10,7 @@
             <label for="daterange">Building Permits Date Range:</label>
             <input type="text" id="daterange" name="daterange" />
             <input type="checkbox" id="showmapbox" name="showmapbox" {{showmapbox}} onclick="toggleCheckbox()" /> Show 2017 Traffic Incidents
-            <button type="submit" class="btn btn-primary">Load Data</button>
+            <button type="submit" class="btn btn-primary">Search</button>
         </div>
     </form>
 
@@ -46,7 +46,7 @@
         const mapboxAccessToken = "{{mapboxAccessToken}}"
         const showmapbox = "{{showmapbox}}"
 
-        const showmapLayer = L.tileLayer('https://api.mapbox.com/styles/v1/raymondleeuofc/cm8ffxn5g00zk01ssh1gdgld4/tiles/{z}/{x}/{y}?fresh=true&access_token=' + mapboxAccessToken, {
+        const showmapLayer = L.tileLayer('https://api.mapbox.com/styles/v1/raymondleeuofc/cm8gt6139012p01r0gzf46qqw/tiles/{z}/{x}/{y}?fresh=true&access_token=' + mapboxAccessToken, {
             maxZoom: 19,
             zoomOffset: -1,
             tileSize: 512,

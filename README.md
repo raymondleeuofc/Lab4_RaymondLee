@@ -14,10 +14,10 @@ The objective of this lab was to gain experience with Mapbox Vector Tiles and Ma
 1. All requirements from Lab 3 are met. 
 2. When the user visits the site, the 2017 Traffic Incident layer can be toggled on and off. 
 3. The map layer was designed to be visually appealing, this was done by adjusting factors such as Radius, Color, Blur, and Opacity.
-    - Radius 
-    - Color
-    - Blur
-    - Opacity
+    - Radius : as the user zooms in, the size of the points increase.
+    - Color : as the user zooms in, the color changes from a dark purple to a bright magenta. 
+    - Blur : as the user zooms in, the blurring of the points decreases (becomes more sharp).
+    - Opacity : as the user zooms in, the points become less opaque. 
 
 
 ## Additional Details about the Lab Assignment 

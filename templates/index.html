@@ -9,7 +9,7 @@
         <div class="container">
             <label for="daterange">Building Permits Date Range:</label>
             <input type="text" id="daterange" name="daterange" />
-            <input type="checkbox" id="showmapbox" name="showmapbox" {{showmapbox}} />Show 2017 Traffic Incidents
+            <input type="checkbox" id="showmapbox" name="showmapbox" {{showmapbox}} onclick="toggleCheckbox()" /> Show 2017 Traffic Incidents
             <button type="submit" class="btn btn-primary">Load Data</button>
         </div>
     </form>
@@ -46,13 +46,30 @@
         const mapboxAccessToken = "{{mapboxAccessToken}}"
         const showmapbox = "{{showmapbox}}"
 
+        const showmapLayer = L.tileLayer('https://api.mapbox.com/styles/v1/raymondleeuofc/cm8ffxn5g00zk01ssh1gdgld4/tiles/{z}/{x}/{y}?fresh=true&access_token=' + mapboxAccessToken, {
+            maxZoom: 19,
+            zoomOffset: -1,
+            tileSize: 512,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        });
+
         if (showmapbox !== '') {
-            L.tileLayer(' https://api.mapbox.com/styles/v1/raymondleeuofc/cm8ffxn5g00zk01ssh1gdgld4/tiles/{z}/{x}/{y}?fresh=true&access_token=' + mapboxAccessToken, {
-                maxZoom: 19,
-                zoomOffset: -1,
-                tileSize: 512,
-                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-            }).addTo(map);
+            map.addLayer(showmapLayer);
+        }
+
+        // Show or hide on checkbox clicked
+
+        function toggleCheckbox() {
+            var checkBox = document.getElementById("showmapbox");
+            if (checkBox.checked == true){
+                if (!map.hasLayer(showmapLayer)) {
+                    map.addLayer(showmapLayer);
+                }
+            } else {
+                if (map.hasLayer(showmapLayer)) {
+                    map.removeLayer(showmapLayer);
+                }
+            }
         }
 
         // Search Calgary Building Permits data set and add to map. 
